@@ -34,7 +34,7 @@ public class BaseTableView: UITableView {
         }
     }
     
-     var onScroll: ((UIScrollView) -> ())?
+    public var onScroll: ((UIScrollView) -> ())?
      
     override public init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -52,9 +52,6 @@ public class BaseTableView: UITableView {
         estimatedRowHeight = 0
         estimatedSectionHeaderHeight = 0
         estimatedSectionFooterHeight = 0
-        register(StandartImageCell.nib, forCellReuseIdentifier: StandartImageCell.identifire)
-        register(BaseFooterView.nib, forHeaderFooterViewReuseIdentifier: BaseFooterView.identifire)
-        register(TitleHeaderView.nib, forHeaderFooterViewReuseIdentifier: TitleHeaderView.identifire)
     }
 }
 
