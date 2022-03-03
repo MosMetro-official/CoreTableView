@@ -8,17 +8,18 @@
 import UIKit
 
 public protocol CellData {
+    
+    /// Height for element. Mandatory
+    var height: CGFloat { get }
+    
+    var onSelect: (() -> Void) { get }
+    
     // tint color for cell. Mostly for accessory elements. Default: system
     var tintColor: UIColor { get }
     
     var accesoryType: UITableViewCell.AccessoryType? { get }
     
     var accessoryView: UIView? { get }
-    
-    var onSelect: () -> () { get }
-    
-    /// Height for element. Mandatory
-    var height: CGFloat { get }
     
     /// prepares hash values of cell from their content
     /// - Returns: Array of hash values
@@ -49,7 +50,7 @@ extension CellData {
     
     public var accessoryView: UIView? { return nil }
     
-    public var onSelect: () -> () { return {} }
+    public var onSelect: (() -> Void) { return {} }
     
     public func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) { }
     
