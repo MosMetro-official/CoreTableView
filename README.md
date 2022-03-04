@@ -24,6 +24,8 @@ The Package is a wrapper for BEST UITableView perfomance, that is includes Diffe
 
 ## Usage
 
+![A small but clear instruction](./Insruction.png)
+
 First of all, you need to set BaseTableView - main actor for the lib. You can host it in Xib / Storyboard file or natively by code.
 
 ```swift
