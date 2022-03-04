@@ -7,7 +7,8 @@ CoreTableView module for Data-Driven-UI Architecture. This lib is main UI Archit
 - 💬  Very easy to integrate
 - 📱  Working from iOS(11+) && guaranties same perfomance on iPhone 5s and 13 Pro Mapx
 - 🚴  All updates are natively
-    
+
+Please do not forget that the (DifferenceKit)[https://github.com/ra1028/DifferenceKit] library is integrated into our wrapper. We have fixed the version and are following the update very closely. In any case, you don't need to import DifferenceKit separately into your project.    
     
 ## Integration
 
