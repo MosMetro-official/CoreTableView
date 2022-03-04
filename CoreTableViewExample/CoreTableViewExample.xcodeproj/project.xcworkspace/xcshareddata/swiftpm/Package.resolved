@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CoreTableView",
+        "repositoryURL": "https://github.com/MosMetro-official/CoreTableView",
+        "state": {
+          "branch": "main",
+          "revision": "cbadb92d78b5ac5b080bb5bd5beb54197dddea4a",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

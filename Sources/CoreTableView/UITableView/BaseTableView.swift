@@ -83,7 +83,7 @@ extension BaseTableView: UITableViewDataSource {
 extension BaseTableView: UITableViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        onScroll?(scrollView)
+        self.onScroll?(scrollView)
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -94,7 +94,10 @@ extension BaseTableView: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
+        guard
+            let footerData = self.viewState[section].model.footer
+        else { return nil }
+        return footerData.footer(for: tableView, section: section)
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

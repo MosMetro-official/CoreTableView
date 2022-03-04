@@ -10,7 +10,7 @@ import UIKit
 public extension UITableViewCell {
     
     static var nib  : UINib {
-        return UINib(nibName: identifire, bundle: Bundle.current)
+        return UINib(nibName: identifire, bundle: nil)
     }
     
     static var identifire : String {
