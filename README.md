@@ -7,13 +7,17 @@ CoreTableView module for Data-Driven-UI Architecture. This lib is main UI Archit
 - 💬  Very easy to integrate
 - 📱  Working from iOS(11+) && guaranties same perfomance on iPhone 5s and 13 Pro Mapx
 - 🚴  All updates are natively
+    
+    
 
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
 ## Integration
 
 ### if as local package
