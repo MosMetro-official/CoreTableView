@@ -1,21 +1,12 @@
 # CoreTableView
 
-<img align="right" src="https://media.giphy.com/media/Q13i7co9erkCg4CG84/giphy.gif" alt="MosMetro Stations Searching" width=250px height=500px/>
+<img align="right" src="https://media.giphy.com/media/Q13i7co9erkCg4CG84/giphy.gif" alt="MosMetro Stations Searching" width=125px height=250px/>
 
 CoreTableView module for Data-Driven-UI Architecture. This lib is main UI Architecture pattern for Moscow Metro iOS Mobile App. Main advantages:
 - 🤓  BEST UITableView Perfomance
 - 💬  Very easy to integrate
 - 📱  Working from iOS(11+) && guaranties same perfomance on iPhone 5s and 13 Pro Mapx
 - 🚴  All updates are natively
-    
-    
-
-    
-    
-    
-    
-    
-    
     
     
 ## Integration
