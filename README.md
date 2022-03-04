@@ -1,6 +1,12 @@
 # CoreTableView
 
-CoreTableView module for Data-Driven-UI Architecture
+<img align="right" src="https://media.giphy.com/media/Q13i7co9erkCg4CG84/giphy.gif" alt="MosMetro Stations Searching" width=250px height=465px/>
+
+CoreTableView module for Data-Driven-UI Architecture. This lib is main UI Architecture pattern for Moscow Metro iOS Mobile App. Main adwantages:
+- 🤓  BEST UITableView Perfomance
+- 💬  Very easy to integrate
+- 📱  Working from iOS(11+) && guaranties same perfomance on iPhone 5s and 13 Pro Mapx
+- 🚴  All updates are natively
 
 ## Integration
 
@@ -219,5 +225,7 @@ extension _MyCellData {
 ```
 
 The implementation of these functions is necessary for a seamless and immediate update of the Base Table View. If the table knows the height of each cell in advance, then you can update the table without loss of performance.
+
+The built-in Difference kit library compares the hash value of the table cell content and updates only those cells that need updating.
 
 The most important part for the best perfomance using BaseTableView is to calculate YourTableViewCell height. You can do it by yourself, if your constraints are fixed - just calculate the height and return the value. But if you have some greaterOrEqual constraint, for a label - you can calculate it by using our extesion "_.height(withConstrainedWidth: CGFloat, font: UIFont)_"
