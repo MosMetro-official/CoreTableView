@@ -35,6 +35,7 @@ public class BaseTableView: UITableView {
     }
     
     public var onScroll: ((UIScrollView) -> ())?
+    public var onWillDisplay: ((CellWillDisplayData) -> Void)?
      
     override public init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -76,6 +77,7 @@ extension BaseTableView: UITableViewDataSource {
         guard
             let element = self.viewState[safe: indexPath.section]?.elements[safe: indexPath.row]?.content
         else { return }
+        self.onWillDisplay?((tableView: tableView, cell: cell, indexPath: indexPath))
         element.prepare(cell: cell, for: tableView, indexPath: indexPath)
     }
 }
