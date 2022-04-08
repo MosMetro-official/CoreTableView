@@ -55,7 +55,7 @@ extension CellData {
     
     public var onSelect: (() -> Void) { return {} }
     
-    var onItemSelect: Command<Void>  { return Command(action: {}) }
+    public var onItemSelect: Command<Void>  { return Command(action: {}) }
     
     public func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) { }
     
