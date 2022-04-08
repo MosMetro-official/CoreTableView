@@ -128,6 +128,7 @@ extension BaseTableView: UITableViewDelegate {
             let element = self.viewState[safe: indexPath.section]?.elements[safe: indexPath.row]?.content
         else { return }
         element.onSelect()
+        element.onItemSelect.perform(with: ())
         deselectRow(at: indexPath, animated: true)
     }
     

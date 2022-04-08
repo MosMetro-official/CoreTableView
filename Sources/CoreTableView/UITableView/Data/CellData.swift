@@ -12,7 +12,10 @@ public protocol CellData {
     /// Height for element. Mandatory
     var height: CGFloat { get }
     
+    @available(*, deprecated, message: "Use new on onSelect with Command action")
     var onSelect: (() -> Void) { get }
+    
+    var onItemSelect: Command<Void> { get }
     
     // tint color for cell. Mostly for accessory elements. Default: system
     var tintColor: UIColor { get }
@@ -51,6 +54,8 @@ extension CellData {
     public var accessoryView: UIView? { return nil }
     
     public var onSelect: (() -> Void) { return {} }
+    
+    var onItemSelect: Command<Void>  { return Command(action: {}) }
     
     public func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) { }
     
