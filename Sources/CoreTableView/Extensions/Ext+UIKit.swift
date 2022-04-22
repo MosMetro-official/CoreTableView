@@ -113,14 +113,10 @@ public extension UITableView {
     }
 
     private func _performBatchUpdates(_ updates: () -> Void) {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-            performBatchUpdates(updates)
-        }
-        else {
+        
             beginUpdates()
             updates()
             endUpdates()
-        }
     }
 }
 
