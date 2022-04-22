@@ -113,15 +113,10 @@ public extension UITableView {
     }
 
     private func _performBatchUpdates(_ updates: () -> Void) {
-        if #available(iOS 11.0, *) {
-            self.setContentOffset(self.contentOffset, animated: false)
-            performBatchUpdates(updates)
-        } else {
-            beginUpdates()
+ 
             self.setContentOffset(self.contentOffset, animated: false)
             updates()
-            endUpdates()
-        }
+        
             
     }
 }
