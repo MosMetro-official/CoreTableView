@@ -9,66 +9,105 @@ import UIKit
 
 public typealias State = ArraySection<SectionState, Element>
 
-public struct Element: ContentEquatable, ContentIdentifiable, Hashable {
+
+public struct Element: Differentiable, Hashable {
+    
+    
     
     public static func == (lhs: Element, rhs: Element) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
     
-    var id : Int {
-        print("Hash value for \(hashValue)")
-        return hashValue
+    
+//    public static func == (lhs: Element, rhs: Element) -> Bool {
+//        return lhs.hashValue == rhs.hashValue
+//    }
+    
+    public func hash(into hasher: inout Hasher) {
+        content.hashValues().forEach {
+            hasher.combine($0)
+        }
     }
     
-    var content: CellData
+    
+    public var differenceIdentifier: String {
+        return content.id
+    }
+    
+    
+    public typealias DifferenceIdentifier = String
+    
     
     public init(content: CellData) {
         self.content = content
     }
     
-    public var differenceIdentifier: Int {
-        return self.id
-    }
-    
-    public func hash(into hasher: inout Hasher) {
-        let hashValues = content.hashValues()
-        hashValues.forEach { value in
-            hasher.combine(value)
-        }
-    }
-    
     public func isContentEqual(to source: Element) -> Bool {
-        return self.id == source.id
+        return self == source
     }
+    
+    
+    var content: CellData
+    
 }
 
-public struct SectionState : Differentiable, Equatable, Hashable {
+//public struct Element: Differentiable, Hashable {
+//
+//    public static func == (lhs: Element, rhs: Element) -> Bool {
+//        return lhs.id == rhs.id
+//    }
+//
+//    var id : Int {
+//        print("Hash value for \(hashValue)")
+//        return hashValue
+//    }
+//
+//    public func hash(into hasher: inout Hasher) {
+//        content.hashValues().forEach { hasher.combine($0) }
+//    }
+//
+//    var content: CellData
+//
+//    public init(content: CellData) {
+//        self.content = content
+//    }
+//
+//    public var differenceIdentifier: Int {
+//        return self.id
+//    }
+//
+//
+//    public func isContentEqual(to source: Element) -> Bool {
+//        return self == source
+//    }
+//
+//    public typealias DifferenceIdentifier = Int
+//}
+
+public struct SectionState : Differentiable {
     
-    public var differenceIdentifier: Int {
-        return hashValue
+    
+    public var differenceIdentifier: String {
+        return id
     }
     
-    public static func == (lhs: SectionState, rhs: SectionState) -> Bool {
-        return lhs.differenceIdentifier == rhs.differenceIdentifier
-    }
+    let id: String
     
-    public func hash(into hasher: inout Hasher) {
-        let headerHash = header?.hashValues() ?? [Int.random(in: 0..<1000000)]
-        let footerHash = footer?.hashValues() ?? [Int.random(in: 0..<1000000)]
-        headerHash.forEach { value in
-            hasher.combine(value)
-        }
-        footerHash.forEach { value in
-            hasher.combine(value)
-        }
+    public typealias DifferenceIdentifier = String
+    
+    public func isContentEqual(to source: SectionState) -> Bool {
+        return self.differenceIdentifier == source.differenceIdentifier
     }
+   
+    
     
     var isCollapsed = false
     
     var header: HeaderData?
     var footer: FooterData?
     
-    public init(isCollapsed: Bool = false, header: HeaderData?, footer: FooterData?) {
+    public init(id: String, isCollapsed: Bool = false, header: HeaderData?, footer: FooterData?) {
+        self.id = id
         self.isCollapsed = isCollapsed
         self.footer = footer
         self.header = header

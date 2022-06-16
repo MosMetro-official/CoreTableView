@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		446AE5B4285B399200119414 /* CoreTableView in Frameworks */ = {isa = PBXBuildFile; productRef = 446AE5B3285B399200119414 /* CoreTableView */; };
+		446AE5B7285B44E300119414 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE5B5285B44E300119414 /* TextTableViewCell.swift */; };
+		446AE5B8285B44E300119414 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 446AE5B6285B44E300119414 /* TextTableViewCell.xib */; };
 		6D18100027D22C9D009AC1C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D180FFF27D22C9D009AC1C3 /* AppDelegate.swift */; };
 		6D18100927D22C9E009AC1C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D18100827D22C9E009AC1C3 /* Assets.xcassets */; };
 		6D18100C27D22C9E009AC1C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D18100A27D22C9E009AC1C3 /* LaunchScreen.storyboard */; };
-		6D18101527D22D05009AC1C3 /* CoreTableView in Frameworks */ = {isa = PBXBuildFile; productRef = 6D18101427D22D05009AC1C3 /* CoreTableView */; };
 		6D18101827D22DEE009AC1C3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D18101727D22DEE009AC1C3 /* MainView.swift */; };
 		6D18101B27D22E32009AC1C3 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D18101A27D22E32009AC1C3 /* MainController.swift */; };
 		6D18101D27D22E93009AC1C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D18101C27D22E93009AC1C3 /* Main.storyboard */; };
@@ -25,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		446AE5B1285B36F600119414 /* CoreTableView */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CoreTableView; path = ..; sourceTree = "<group>"; };
+		446AE5B5285B44E300119414 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		446AE5B6285B44E300119414 /* TextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
 		6D180FFC27D22C9D009AC1C3 /* CoreTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D180FFF27D22C9D009AC1C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D18100827D22C9E009AC1C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,18 +53,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D18101527D22D05009AC1C3 /* CoreTableView in Frameworks */,
+				446AE5B4285B399200119414 /* CoreTableView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		446AE5B0285B36F600119414 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				446AE5B1285B36F600119414 /* CoreTableView */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		446AE5B2285B399200119414 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6D180FF327D22C9D009AC1C3 = {
 			isa = PBXGroup;
 			children = (
+				446AE5B0285B36F600119414 /* Packages */,
 				6D180FFE27D22C9D009AC1C3 /* CoreTableViewExample */,
 				6D180FFD27D22C9D009AC1C3 /* Products */,
+				446AE5B2285B399200119414 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +141,8 @@
 			children = (
 				6D76788B27D232E000936E17 /* StandartImageCell.swift */,
 				6D76788C27D232E000936E17 /* StandartImageCell.xib */,
+				446AE5B5285B44E300119414 /* TextTableViewCell.swift */,
+				446AE5B6285B44E300119414 /* TextTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -158,7 +182,7 @@
 			);
 			name = CoreTableViewExample;
 			packageProductDependencies = (
-				6D18101427D22D05009AC1C3 /* CoreTableView */,
+				446AE5B3285B399200119414 /* CoreTableView */,
 			);
 			productName = CoreTableViewExample;
 			productReference = 6D180FFC27D22C9D009AC1C3 /* CoreTableViewExample.app */;
@@ -189,7 +213,6 @@
 			);
 			mainGroup = 6D180FF327D22C9D009AC1C3;
 			packageReferences = (
-				6D18101327D22D05009AC1C3 /* XCRemoteSwiftPackageReference "CoreTableView" */,
 			);
 			productRefGroup = 6D180FFD27D22C9D009AC1C3 /* Products */;
 			projectDirPath = "";
@@ -207,6 +230,7 @@
 			files = (
 				6D76789727D232E000936E17 /* TitleHeaderView.xib in Resources */,
 				6D18101D27D22E93009AC1C3 /* Main.storyboard in Resources */,
+				446AE5B8285B44E300119414 /* TextTableViewCell.xib in Resources */,
 				6D18100C27D22C9E009AC1C3 /* LaunchScreen.storyboard in Resources */,
 				6D76789627D232E000936E17 /* BaseFooterView.xib in Resources */,
 				6D76789427D232E000936E17 /* StandartImageCell.xib in Resources */,
@@ -221,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446AE5B7285B44E300119414 /* TextTableViewCell.swift in Sources */,
 				6D76788927D231A200936E17 /* Ext+UITableViewHeaderFooterView.swift in Sources */,
 				6D18101B27D22E32009AC1C3 /* MainController.swift in Sources */,
 				6D76789327D232E000936E17 /* StandartImageCell.swift in Sources */,
@@ -443,21 +468,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		6D18101327D22D05009AC1C3 /* XCRemoteSwiftPackageReference "CoreTableView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MosMetro-official/CoreTableView";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		6D18101427D22D05009AC1C3 /* CoreTableView */ = {
+		446AE5B3285B399200119414 /* CoreTableView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6D18101327D22D05009AC1C3 /* XCRemoteSwiftPackageReference "CoreTableView" */;
 			productName = CoreTableView;
 		};
 /* End XCSwiftPackageProductDependency section */

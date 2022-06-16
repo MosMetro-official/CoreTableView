@@ -80,6 +80,13 @@ extension BaseTableView: UITableViewDataSource {
         self.onWillDisplay?((tableView: tableView, cell: cell, indexPath: indexPath))
         element.prepare(cell: cell, for: tableView, indexPath: indexPath)
     }
+    
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard
+            let element = self.viewState[safe: indexPath.section]?.elements[safe: indexPath.row]?.content
+        else { return }
+        element.didEndDisplaying(cell: cell, for: tableView, indexPath: indexPath)
+    }
 }
 
 extension BaseTableView: UITableViewDelegate {
