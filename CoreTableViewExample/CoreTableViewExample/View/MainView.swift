@@ -19,7 +19,6 @@ class MainView: UIView {
         
         struct Row: _StandartImage {
             var id: String
-            
             var title: String
             var leftImage: UIImage?
             var separator: Bool
@@ -40,13 +39,9 @@ class MainView: UIView {
         
         struct Text: _TextTableViewCell {
             var text: String?
-            
             var placeholder: String
-            
             var onTextEnter: Command<String>
-            
             var id: String
-            
         }
     }
     

@@ -1,6 +1,6 @@
 //
 //  CellData.swift
-//  BaseTableViewKit
+//
 //
 //  Created by Слава Платонов on 08.02.2022.
 //
@@ -9,25 +9,28 @@ import UIKit
 
 public protocol CellData {
     
-    var id: String { get }
+    /// id of the cell for reloading
+    var id : String { get }
     
     /// Height for element. Mandatory
     var height: CGFloat { get }
     
+    /// for compairing the content, if it was modified
     func hashValues() -> [Int]
     
     @available(*, deprecated, message: "Use new on onSelect with Command action")
-    var onSelect: (() -> Void) { get }
-    
-    var onItemSelect: Command<Void> { get }
+    var onSelect : (() -> Void) { get }
     
     // tint color for cell. Mostly for accessory elements. Default: system
-    var tintColor: UIColor { get }
+    var tintColor : UIColor { get }
     
-    var accesoryType: UITableViewCell.AccessoryType? { get }
+    var accesoryType : UITableViewCell.AccessoryType? { get }
     
-    var accessoryView: UIView? { get }
+    var accessoryView : UIView? { get }
     
+    /// for closure gesture, when didSelectRow
+    var onItemSelect : Command<Void> { get }
+
     /// Set cell content in this method
     func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath)
     
@@ -75,5 +78,4 @@ extension CellData {
     }
     
     public func didEndDisplaying(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {}
-    
 }

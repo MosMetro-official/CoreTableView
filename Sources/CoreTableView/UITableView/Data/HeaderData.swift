@@ -9,16 +9,14 @@ import UIKit
 
 public protocol HeaderData {
     
-    var id: String { get } 
+    var id : String { get }
     
-    var height: CGFloat { get }
+    var height : CGFloat { get }
     
     func header(for tableView: UITableView, section: Int) -> UIView?
 }
 
 extension HeaderData {
-    
-   
     
     public func header(for tableView: UITableView, section: Int) -> UIView? {
         return nil

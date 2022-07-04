@@ -23,9 +23,8 @@ extension String {
 }
 
 extension NSAttributedString {
-
+    
     public func height(containerWidth: CGFloat) -> CGFloat {
-
         let rect = self.boundingRect(
             with: CGSize.init(width: containerWidth, height: CGFloat.greatestFiniteMagnitude),
             options: [.usesLineFragmentOrigin, .usesFontLeading],
@@ -33,7 +32,7 @@ extension NSAttributedString {
         )
         return ceil(rect.size.height)
     }
-
+    
     public func width(containerHeight: CGFloat) -> CGFloat {
         let rect = self.boundingRect(
             with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: containerHeight),

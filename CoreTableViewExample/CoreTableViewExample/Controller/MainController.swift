@@ -10,7 +10,7 @@ import UIKit
 import CoreTableView
 
 class MainController : UIViewController {
-
+    
     private let nestedView = MainView(frame: UIScreen.main.bounds)
     
     var counter = 0 {
@@ -30,7 +30,7 @@ class MainController : UIViewController {
             makeState()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view = nestedView
@@ -49,16 +49,6 @@ class MainController : UIViewController {
             accesoryType: nil,
             onSelect: { print("selected added row of third section") }
         ).toElement()
-//        let addedSectionHeader = MainView.ViewState.Header(
-//            title: "added section",
-//            style: .small,
-//            backgroundColor: .clear,
-//            isInsetGrouped: true,
-//            height: 44
-//        )
-        //let addedSection = SectionState(header: addedSectionHeader, footer: nil)
-        //let addedBlock = State(model: addedSection, elements:  [addedRow])
-        
         self.nestedView.viewState.state[0].elements.append(addedRow)
     }
     
@@ -70,10 +60,8 @@ class MainController : UIViewController {
     }
     
     
-
+    
     private func makeState() {
-        
-        // declare rows
         let firstRowOfFirstSection = MainView.ViewState.Row(
             id: "1",
             title: "First row of first section",
@@ -85,7 +73,6 @@ class MainController : UIViewController {
             onSelect: { print("selected first row of first section") }
         ).toElement()
         
-      
         let secondRowOfFirstSection = MainView.ViewState.Row(
             id: "2",
             title: "Second row of first section",
@@ -108,7 +95,7 @@ class MainController : UIViewController {
             onSelect: { print("selected third row of first section") }
         ).toElement()
         
-   
+        
         // declare header if needed
         let firstSectionHeader = MainView.ViewState.Header(
             id: "1",
@@ -124,7 +111,7 @@ class MainController : UIViewController {
         
         // create block with section data and elements
         let firstBlock = State(model: firstSection, elements: [firstRowOfFirstSection,secondRowOfFirstSection,thirdRowOfFirstSection])
-
+        
         let firstRowOfSecondSection = MainView.ViewState.Row(
             id: "1",
             title: "First row of second section",
@@ -170,7 +157,7 @@ class MainController : UIViewController {
             onSelect: { print("selected first row of third section") }
         ).toElement()
         
-                
+        
         let thirdSectionHeader = MainView.ViewState.Header(
             id: "3",
             title: "third section",
@@ -179,7 +166,7 @@ class MainController : UIViewController {
             isInsetGrouped: true,
             height: 44
         )
-
+        
         let thirdSection = SectionState(id: "3", header: thirdSectionHeader, footer: nil)
         let thirdBlock = State(model: thirdSection, elements: [firstRowOfThirdSection])
         
@@ -202,11 +189,9 @@ class MainController : UIViewController {
             isInsetGrouped: true,
             height: 44
         )
-
+        
         let fourthSection = SectionState(id: "4", header: fourthSectionHeader, footer: nil)
         let fourthBlock = State(model: fourthSection, elements: [text,firstRowOfFirstSection,secondRowOfFirstSection,thirdRowOfFirstSection,text2])
-        
-        
         self.nestedView.viewState.state = [firstBlock,secondBlock,thirdBlock, fourthBlock]
     }
 }

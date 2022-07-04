@@ -17,7 +17,7 @@ public protocol _TextTableViewCell: CellData {
 
 extension _TextTableViewCell {
     
-    public var height: CGFloat { return 50 }
+    public var height : CGFloat { return 50 }
     
     public func hashValues() -> [Int] {
         return []
@@ -46,22 +46,15 @@ class TextTableViewCell: UITableViewCell {
 
     @IBOutlet private var textInputField: UITextField!
     
-
-    
-    private var onTextEnter: Command<String>?
+    private var onTextEnter : Command<String>?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         textInputField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc
+    func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         onTextEnter?.perform(with: text)
     }

@@ -159,8 +159,8 @@
 		6D76789027D232E000936E17 /* HeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				6D76789127D232E000936E17 /* TitleHeaderView.xib */,
 				6D76789227D232E000936E17 /* TitleHeaderView.swift */,
+				6D76789127D232E000936E17 /* TitleHeaderView.xib */,
 			);
 			path = HeaderView;
 			sourceTree = "<group>";
