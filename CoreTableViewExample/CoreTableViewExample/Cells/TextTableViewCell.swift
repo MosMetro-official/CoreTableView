@@ -8,11 +8,6 @@
 import UIKit
 import CoreTableView
 
-class DummyTextField: UITextField {
-    
-    
-}
-
 public protocol _TextTableViewCell: CellData {
     var text: String? { get set }
     var placeholder: String { get set }
@@ -50,7 +45,7 @@ extension _TextTableViewCell {
 
 class TextTableViewCell: UITableViewCell {
 
-    @IBOutlet private var textInputField: DummyTextField!
+    @IBOutlet private var textInputField: UITextField!
     
 
     
