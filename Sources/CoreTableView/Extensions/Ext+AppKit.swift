@@ -1,7 +1,15 @@
+//
+//  Ext+AppKit.swift
+//
+//
+//  Created by polykuzin on 03.03.2022.
+//
+
 #if os(macOS)
 import AppKit
 
 public extension NSTableView {
+    
     /// Applies multiple animated updates in stages using `StagedChangeset`.
     ///
     /// - Note: There are combination of changes that crash when applied simultaneously in `performBatchUpdates`.
@@ -15,7 +23,6 @@ public extension NSTableView {
     ///                updates should be stopped and performed reloadData. Default is nil.
     ///   - setData: A closure that takes the collection as a parameter.
     ///              The collection should be set to data-source of NSTableView.
-
     func reload<C>(
         using stagedChangeset: StagedChangeset<C>,
         with animation: @autoclosure () -> NSTableView.AnimationOptions,
@@ -31,7 +38,7 @@ public extension NSTableView {
             setData: setData
         )
     }
-
+    
     /// Applies multiple animated updates in stages using `StagedChangeset`.
     ///
     /// - Note: There are combination of changes that crash when applied simultaneously in `performBatchUpdates`.
@@ -59,32 +66,25 @@ public extension NSTableView {
             setData(data)
             return reloadData()
         }
-
         for changeset in stagedChangeset {
             if let interrupt = interrupt, interrupt(changeset), let data = stagedChangeset.last?.data {
                 setData(data)
                 return reloadData()
             }
-
             beginUpdates()
             setData(changeset.data)
-
             if !changeset.elementDeleted.isEmpty {
                 removeRows(at: IndexSet(changeset.elementDeleted.map { $0.element }), withAnimation: deleteRowsAnimation())
             }
-
             if !changeset.elementInserted.isEmpty {
                 insertRows(at: IndexSet(changeset.elementInserted.map { $0.element }), withAnimation: insertRowsAnimation())
             }
-
             if !changeset.elementUpdated.isEmpty {
                 reloadData(forRowIndexes: IndexSet(changeset.elementUpdated.map { $0.element }), columnIndexes: IndexSet(changeset.elementUpdated.map { $0.section }))
             }
-
             for (source, target) in changeset.elementMoved {
                 moveRow(at: source.element, to: target.element)
             }
-
             endUpdates()
         }
     }
@@ -92,6 +92,7 @@ public extension NSTableView {
 
 @available(macOS 10.11, *)
 public extension NSCollectionView {
+    
     /// Applies multiple animated updates in stages using `StagedChangeset`.
     ///
     /// - Note: There are combination of changes that crash when applied simultaneously in `performBatchUpdates`.
@@ -113,28 +114,22 @@ public extension NSCollectionView {
             setData(data)
             return reloadData()
         }
-
         for changeset in stagedChangeset {
             if let interrupt = interrupt, interrupt(changeset), let data = stagedChangeset.last?.data {
                 setData(data)
                 return reloadData()
             }
-
             animator().performBatchUpdates({
                 setData(changeset.data)
-
                 if !changeset.elementDeleted.isEmpty {
                     deleteItems(at: Set(changeset.elementDeleted.map { IndexPath(item: $0.element, section: $0.section) }))
                 }
-
                 if !changeset.elementInserted.isEmpty {
                     insertItems(at: Set(changeset.elementInserted.map { IndexPath(item: $0.element, section: $0.section) }))
                 }
-
                 if !changeset.elementUpdated.isEmpty {
                     reloadItems(at: Set(changeset.elementUpdated.map { IndexPath(item: $0.element, section: $0.section) }))
                 }
-
                 for (source, target) in changeset.elementMoved {
                     moveItem(at: IndexPath(item: source.element, section: source.section), to: IndexPath(item: target.element, section: target.section))
                 }

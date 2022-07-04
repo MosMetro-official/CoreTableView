@@ -1,6 +1,6 @@
 //
 //  CellData.swift
-//  BaseTableViewKit
+//
 //
 //  Created by Слава Платонов on 08.02.2022.
 //
@@ -9,27 +9,32 @@ import UIKit
 
 public protocol CellData {
     
+    /// id of the cell for reloading
+    var id : String { get }
+    
     /// Height for element. Mandatory
     var height: CGFloat { get }
     
-    @available(*, deprecated, message: "Use new on onSelect with Command action")
-    var onSelect: (() -> Void) { get }
-    
-    var onItemSelect: Command<Void> { get }
-    
-    // tint color for cell. Mostly for accessory elements. Default: system
-    var tintColor: UIColor { get }
-    
-    var accesoryType: UITableViewCell.AccessoryType? { get }
-    
-    var accessoryView: UIView? { get }
-    
-    /// prepares hash values of cell from their content
-    /// - Returns: Array of hash values
+    /// for compairing the content, if it was modified
     func hashValues() -> [Int]
     
+    @available(*, deprecated, message: "Use new on onSelect with Command action")
+    var onSelect : (() -> Void) { get }
+    
+    // tint color for cell. Mostly for accessory elements. Default: system
+    var tintColor : UIColor { get }
+    
+    var accesoryType : UITableViewCell.AccessoryType? { get }
+    
+    var accessoryView : UIView? { get }
+    
+    /// for closure gesture, when didSelectRow
+    var onItemSelect : Command<Void> { get }
+
     /// Set cell content in this method
     func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath)
+    
+    func didEndDisplaying(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath)
     
     /// Creates cell instance, DO NOT SET CONTENT IN THIS METHOD
     /// - Returns: Table cell
@@ -42,10 +47,6 @@ public protocol CellData {
 }
 
 extension CellData {
-    
-    public func hashValues() -> [Int] {
-        return [Int.random(in: 0...22000)]
-    }
     
     public var tintColor: UIColor { return .blue }
     
@@ -75,4 +76,6 @@ extension CellData {
     public func toElement() -> Element {
         return Element(content: self)
     }
+    
+    public func didEndDisplaying(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {}
 }

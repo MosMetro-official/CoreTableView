@@ -14,8 +14,6 @@ public protocol _BaseFooterView: FooterData {
     var isInsetGrouped: Bool { get }
 }
 
-
-
 class BaseFooterView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var leftLabelAnchor: NSLayoutConstraint!

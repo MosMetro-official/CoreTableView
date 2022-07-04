@@ -9,18 +9,14 @@ import UIKit
 
 public protocol FooterData {
     
-    var height: CGFloat { get }
+    var id : String { get }
     
-    func hashValues() -> [Int]
+    var height : CGFloat { get }
     
     func footer(for tableView: UITableView, section: Int) -> UIView?
 }
 
 extension FooterData {
-    
-    public func hashValues() -> [Int] {
-        return [Int.random(in: 0...22000)]
-    }
     
     public func footer(for tableView: UITableView, section: Int) -> UIView? {
         return nil

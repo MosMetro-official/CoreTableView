@@ -21,7 +21,6 @@ public extension Bundle {
      Variable to be used in the Package to find files / assets
      */
     static var current : Bundle = {
- 
         let bundleName = "CoreTableView_CoreTableView"
         let candidates = [
             Bundle.main.bundleURL,
