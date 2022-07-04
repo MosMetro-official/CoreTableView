@@ -45,6 +45,8 @@ class MainView: UIView {
             
             var onTextEnter: Command<String>
             
+            var onTextFinish: Command<String>
+            
             var id: String
             
         }

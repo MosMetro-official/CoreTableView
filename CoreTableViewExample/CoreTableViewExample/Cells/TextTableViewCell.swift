@@ -8,10 +8,16 @@
 import UIKit
 import CoreTableView
 
+class DummyTextField: UITextField {
+    
+    
+}
+
 public protocol _TextTableViewCell: CellData {
     var text: String? { get set }
     var placeholder: String { get set }
     var onTextEnter: Command<String> { get }
+    var onTextFinish: Command<String> { get }
     
 }
 
@@ -20,7 +26,7 @@ extension _TextTableViewCell {
     public var height: CGFloat { return 50 }
     
     public func hashValues() -> [Int] {
-        return []
+        return [text?.hashValue ?? 0]
     }
     
     public func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {
@@ -44,15 +50,17 @@ extension _TextTableViewCell {
 
 class TextTableViewCell: UITableViewCell {
 
-    @IBOutlet private var textInputField: UITextField!
+    @IBOutlet private var textInputField: DummyTextField!
     
 
     
     private var onTextEnter: Command<String>?
+    private var onTextFinish: Command<String>?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         textInputField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        textInputField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -70,5 +78,13 @@ class TextTableViewCell: UITableViewCell {
         textInputField.text = data.text
         textInputField.placeholder = data.placeholder
         self.onTextEnter = data.onTextEnter
+        self.onTextFinish = data.onTextFinish
+    }
+}
+
+extension TextTableViewCell: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.onTextFinish?.perform(with: textField.text ?? "")
     }
 }
