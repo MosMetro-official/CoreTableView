@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "CoreTableView"
-  spec.version      = "0.0.6"
+  spec.version      = "0.0.7"
   spec.summary      = "CoreTableView module for Data-Driven-UI Architecture. This lib is main UI Architecture pattern for Moscow Metro iOS Mobile App. Main advantages:"
 
   # This description is used to generate tags and improve search results.
