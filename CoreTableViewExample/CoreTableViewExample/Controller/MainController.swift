@@ -21,18 +21,27 @@ class MainController : UIViewController {
     
     var textModel: String? = nil {
         didSet {
-            makeState()
+            if !isEnteringText {
+                makeState()
+            }
+           
         }
     }
     
     var textModel2: String? = nil {
         didSet {
-            makeState()
+            if !isEnteringText {
+                makeState()
+            }
+            
         }
     }
     
+    private var isEnteringText = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         view = nestedView
         makeState()
         navigationItem.rightBarButtonItems  = [UIBarButtonItem(barButtonSystemItem: .redo, target: self, action: #selector(handleRemove)), UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))]
@@ -171,15 +180,27 @@ class MainController : UIViewController {
         let thirdBlock = State(model: thirdSection, elements: [firstRowOfThirdSection])
         
         let onTextEnter: Command<String> = Command { text in
+            self.isEnteringText = true
             self.textModel = text
         }
         
         let onTextEnter2: Command<String> = Command { text in
+            self.isEnteringText = true
             self.textModel2 = text
         }
         
-        let text = MainView.ViewState.Text(text: textModel, placeholder: "Enter text here!", onTextEnter: onTextEnter, id: "1").toElement()
-        let text2 = MainView.ViewState.Text(text: textModel2, placeholder: "Enter text here!", onTextEnter: onTextEnter2, id: "2").toElement()
+        let onTextFinish: Command<String> = Command { text in
+            self.isEnteringText = false
+            self.textModel = text
+        }
+        
+        let onTextFinish2: Command<String> = Command { text in
+            self.isEnteringText = false
+            self.textModel2 = text
+        }
+        
+        let text = MainView.ViewState.Text(text: textModel, placeholder: "Enter text here!", onTextEnter: onTextEnter, onTextFinish: onTextFinish, id: "1").toElement()
+        let text2 = MainView.ViewState.Text(text: textModel2, placeholder: "Enter text here!", onTextEnter: onTextEnter2, onTextFinish: onTextFinish2, id: "2").toElement()
         
         let fourthSectionHeader = MainView.ViewState.Header(
             id: "4",
@@ -193,5 +214,17 @@ class MainController : UIViewController {
         let fourthSection = SectionState(id: "4", header: fourthSectionHeader, footer: nil)
         let fourthBlock = State(model: fourthSection, elements: [text,firstRowOfFirstSection,secondRowOfFirstSection,thirdRowOfFirstSection,text2])
         self.nestedView.viewState.state = [firstBlock,secondBlock,thirdBlock, fourthBlock]
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
