@@ -12,7 +12,7 @@ public protocol _StandartImage : CellData {
     var title : String { get }
     var leftImage : UIImage? { get }
     var separator : Bool { get }
-    var backgroundColor: UIColor? { get }
+    var backgroundColor : UIColor? { get }
 }
 
 extension _StandartImage {

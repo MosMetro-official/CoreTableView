@@ -9,15 +9,14 @@ import UIKit
 
 public protocol FooterData {
     
-    var id: String { get }
+    var id : String { get }
     
-    var height: CGFloat { get }
+    var height : CGFloat { get }
     
     func footer(for tableView: UITableView, section: Int) -> UIView?
 }
 
 extension FooterData {
-    
     
     public func footer(for tableView: UITableView, section: Int) -> UIView? {
         return nil

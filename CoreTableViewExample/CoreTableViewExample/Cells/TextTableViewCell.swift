@@ -23,7 +23,7 @@ public protocol _TextTableViewCell: CellData {
 
 extension _TextTableViewCell {
     
-    public var height: CGFloat { return 50 }
+    public var height : CGFloat { return 50 }
     
     public func hashValues() -> [Int] {
         return [text?.hashValue ?? 0]
@@ -62,14 +62,9 @@ class TextTableViewCell: UITableViewCell {
         textInputField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         textInputField.delegate = self
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc
+    func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         onTextEnter?.perform(with: text)
     }

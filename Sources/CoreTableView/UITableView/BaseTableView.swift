@@ -16,7 +16,9 @@ public class BaseTableView: UITableView {
     
     /// original data source
     private var viewState = [State]()
-    public var rowAnimation: UITableView.RowAnimation = .fade
+    
+    public var rowAnimation : UITableView.RowAnimation = .fade
+    
     public var shouldUseReload = false
     
     /// public data source. Affects original, used only for diff calculattions
@@ -35,6 +37,7 @@ public class BaseTableView: UITableView {
     }
     
     public var onScroll: ((UIScrollView) -> ())?
+    
     public var onWillDisplay: ((CellWillDisplayData) -> Void)?
      
     override public init(frame: CGRect, style: UITableView.Style) {
@@ -56,7 +59,7 @@ public class BaseTableView: UITableView {
     }
 }
 
-extension BaseTableView: UITableViewDataSource {
+extension BaseTableView : UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
         return viewState.count
@@ -89,7 +92,7 @@ extension BaseTableView: UITableViewDataSource {
     }
 }
 
-extension BaseTableView: UITableViewDelegate {
+extension BaseTableView : UITableViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.onScroll?(scrollView)
