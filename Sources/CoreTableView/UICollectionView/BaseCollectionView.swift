@@ -42,6 +42,8 @@ public class BaseCollectionView: UICollectionView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        delegate = self
+        dataSource = self
     }
     
 }

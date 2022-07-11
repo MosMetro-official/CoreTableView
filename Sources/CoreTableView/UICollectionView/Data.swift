@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 public typealias CollectionState = ArraySection<CollectionSectionState, CollectionElement>
 
 public struct CollectionElement: Differentiable, Hashable {
@@ -43,10 +44,6 @@ public struct CollectionSectionState : Differentiable {
     
     public let id : String
         
-    public var header : HeaderData?
-    
-    public var footer : FooterData?
-    
     public var isCollapsed = false
     
     public var differenceIdentifier: String {
@@ -59,11 +56,10 @@ public struct CollectionSectionState : Differentiable {
         return self.differenceIdentifier == source.differenceIdentifier
     }
     
-    public init(id: String, isCollapsed: Bool = false, header: HeaderData? = nil, footer: FooterData? = nil) {
+    public init(id: String, isCollapsed: Bool = false) {
         self.id = id
         self.isCollapsed = isCollapsed
-        self.footer = footer
-        self.header = header
+        
     }
 }
 
@@ -83,5 +79,7 @@ public extension CollectionViewModel {
     func element() -> CollectionElement {
         return CollectionElement(content: self)
     }
+    
+    var onItemSelect: Command<Void> { return Command { _ in } }
     
 }
