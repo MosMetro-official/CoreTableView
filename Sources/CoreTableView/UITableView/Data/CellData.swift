@@ -7,7 +7,20 @@
 
 import UIKit
 
-public protocol CellData {
+public protocol BaseCellViewModel {
+    /// id of the cell for reloading
+    var id : String { get }
+    
+    /// for compairing the content, if it was modified
+    func hashValues() -> [Int]
+    
+    /// for closure gesture, when didSelectRow
+    var onItemSelect : Command<Void> { get }
+    
+}
+
+
+public protocol CellData: BaseCellViewModel {
     
     /// id of the cell for reloading
     var id : String { get }
@@ -39,8 +52,6 @@ public protocol CellData {
     /// Creates cell instance, DO NOT SET CONTENT IN THIS METHOD
     /// - Returns: Table cell
     func cell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
-    
-    func cell(for collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell
     
     @available(iOS 13.0, *)
     func menu(for tableView: UITableView, indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration?
