@@ -7,6 +7,7 @@
 
 import UIKit
 import DifferenceKit
+import CoreExtensions
 
 public typealias CellWillDisplayData = (tableView: UITableView, cell: UITableViewCell, indexPath: IndexPath)
 

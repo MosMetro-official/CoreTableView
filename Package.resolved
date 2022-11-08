@@ -9,6 +9,15 @@
           "revision": "073b9671ce2b9b5b96398611427a1f929927e428",
           "version": "1.3.0"
         }
+      },
+      {
+        "package": "CoreExtensions",
+        "repositoryURL": "https://gitlab.brndev.ru/mosmetro-ios/mmcoreextensions.git",
+        "state": {
+          "branch": "main",
+          "revision": "41e342f5b105f2c62aa82dd9dc234e5c75291413",
+          "version": null
+        }
       }
     ]
   },
