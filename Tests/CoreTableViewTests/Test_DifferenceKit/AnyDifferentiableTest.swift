@@ -1,5 +1,6 @@
 import XCTest
 @testable import CoreTableView
+@testable import DifferenceKit
 
 final class AnyDifferentiableTestCase: XCTestCase {
     func testHashable() {

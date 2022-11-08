@@ -1,6 +1,6 @@
 import XCTest
 @testable import CoreTableView
-
+@testable import DifferenceKit
 extension Int: Differentiable {}
 extension String: Differentiable {}
 

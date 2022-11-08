@@ -13,11 +13,15 @@ let package = Package(
             name: "CoreTableView",
             targets: ["CoreTableView"]),
     ],
-    dependencies: [ ],
+    dependencies: [
+        .package(url:"https://github.com/ra1028/DifferenceKit.git", from: .init(stringLiteral: "1.3.0"))
+    ],
     targets: [
         .target(
             name: "CoreTableView",
-            dependencies: []),
+            dependencies: [
+                .product(name: "DifferenceKit", package: "DifferenceKit")
+            ]),
         .testTarget(
             name: "CoreTableViewTests",
             dependencies: ["CoreTableView"]),

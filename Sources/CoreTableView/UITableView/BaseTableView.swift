@@ -6,10 +6,8 @@
 //
 
 import UIKit
+import DifferenceKit
 
-public typealias MenuData = (tableView: UITableView, indexPath: IndexPath, point: CGPoint, element: Any)
-public typealias TableData = (tableView: UITableView, indexPath: IndexPath, element: Any)
-public typealias CellDisplayData = (tableView: UITableView, cell: UITableViewCell, indexPath: IndexPath, element: Any)
 public typealias CellWillDisplayData = (tableView: UITableView, cell: UITableViewCell, indexPath: IndexPath)
 
 public class BaseTableView: UITableView {

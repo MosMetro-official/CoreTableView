@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DifferenceKit
 
 public typealias State = ArraySection<SectionState, Element>
 
