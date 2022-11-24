@@ -38,6 +38,8 @@ public class BaseTableView: UITableView {
     public var onScroll: ((UIScrollView) -> ())?
     
     public var onWillDisplay: ((CellWillDisplayData) -> Void)?
+    
+    public var onSelect: ((IndexPath) -> Void)?
      
     override public init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -138,6 +140,7 @@ extension BaseTableView : UITableViewDelegate {
         else { return }
         element.onSelect()
         element.onItemSelect.perform(with: ())
+        onSelect?(indexPath)
         deselectRow(at: indexPath, animated: true)
     }
     
