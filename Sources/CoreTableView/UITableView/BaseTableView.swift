@@ -117,7 +117,7 @@ extension BaseTableView : UITableViewDelegate {
         guard
             let element = self.viewState[safe: indexPath.section]?.elements[safe: indexPath.row]?.content
         else { return 44 }
-        return element.height
+        return element.height ?? UITableView.automaticDimension
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

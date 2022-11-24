@@ -12,8 +12,8 @@ public protocol CellData {
     /// id of the cell for reloading
     var id : String { get }
     
-    /// Height for element. Mandatory
-    var height: CGFloat { get }
+    /// Height for element. If assigned – used for cell height, otherwise cell height will be calculated dynamically
+    var height: CGFloat? { get }
     
     /// for compairing the content, if it was modified
     func hashValues() -> [Int]
