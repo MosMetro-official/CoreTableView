@@ -82,6 +82,10 @@ extension BaseTableView : UITableViewDataSource {
             let element = self.viewState[safe: indexPath.section]?.elements[safe: indexPath.row]?.content
         else { return }
         self.onWillDisplay?((tableView: tableView, cell: cell, indexPath: indexPath))
+        if let roundingStyle = element.roundingStyle {
+            roundingStyle.round(cell: cell)
+        }
+        
         element.prepare(cell: cell, for: tableView, indexPath: indexPath)
     }
     
