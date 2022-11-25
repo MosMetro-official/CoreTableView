@@ -42,6 +42,8 @@ public protocol CellData {
     
     func cell(for collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell
     
+    var roundingStyle: CellRoundingStyle? { get }
+    
     @available(iOS 13.0, *)
     func menu(for tableView: UITableView, indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration?
 }
